@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date                  = Date.today.to_s
   s.description           = 'This plugin check cpu steal'
   s.email                 = 'carlf@photocarl.org'
-  s.executables           = ['check-cpu-steal.rb']
+  s.executables           = ['check_cpu_steal.rb']
   s.homepage              = 'https://github.com/opentable/check-cpu-steal'
   s.license               = 'MIT'
   s.name                  = 'check-cpu-steal'
