@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'sensu-plugin/check/cli'
-require 'check-cpu-steal/cpu_stats'
+require 'check_cpu_steal/cpu_stats'
 
 #
 # Check CPU Steal
