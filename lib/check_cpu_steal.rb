@@ -1,1 +1,1 @@
-require 'check-cpu-steal/version'
+require 'check_cpu_steal/version'
