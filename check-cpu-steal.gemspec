@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.name                  = 'check-cpu-steal'
   s.platform              = Gem::Platform::RUBY
   s.require_paths         = ['lib']
+  s.files                 = ['lib/check_cpu_steal/cpu_stats.rb']
   s.required_ruby_version = '>= 2.0.0'
   s.summary               = 'A check for cpu steal'
   s.version               = CheckSteal::Version::VER_STRING
