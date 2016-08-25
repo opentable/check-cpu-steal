@@ -1,5 +1,5 @@
 #
-# Stat collection and calculation
+# CPU stat collection and calculation
 #
 class CpuStats
   CLASSES = [:user, :nice, :system, :idle, :iowait, :irq,
@@ -21,7 +21,7 @@ class CpuStats
     info = read_proc
     stats = info.split(/\s+/)
     stats.shift
-    stats.map(&:to_f)
+    stats.map!(&:to_f)
     Hash[CLASSES.zip(stats)]
   end
 
