@@ -30,6 +30,6 @@ class CpuStats
   end
 
   def get_stat_pct(stat_name)
-    get_stat_diff[stat_name] / get_stat_diff[:total]
+    get_stat_diff(stat_name) / get_stat_diff(:total)
   end
 end
