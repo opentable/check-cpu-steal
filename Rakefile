@@ -7,3 +7,5 @@ RuboCop::RakeTask.new
 RSpec::Core::RakeTask.new(:spec) do |r|
   r.pattern = FileList['spec/*_spec.rb']
 end
+
+task ci: [:spec, :rubocop]

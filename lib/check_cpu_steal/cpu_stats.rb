@@ -5,10 +5,12 @@ class CpuStats
   CLASSES = [:user, :nice, :system, :idle, :iowait, :irq,
              :softirq, :steal, :guest, :guest_nice].freeze
 
-  def initialize(sleep_time = 5)
-    @now = stats
+  attr_reader :now, :later
+
+  def collect(sleep_time = 5)
+    @now = stats(read_proc)
     sleep sleep_time
-    @later = stats
+    @later = stats(read_proc)
     @now[:total] = @now.values.inject(:+)
     @later[:total] = @later.values.inject(:+)
   end
@@ -17,19 +19,18 @@ class CpuStats
     File.foreach(file).first
   end
 
-  def stats
-    info = read_proc
+  def stats(info)
     stats = info.split(/\s+/)
     stats.shift
     stats.map!(&:to_f)
     Hash[CLASSES.zip(stats)]
   end
 
-  def get_stat_diff(stat_name)
+  def stat_diff(stat_name)
     @later[stat_name] - @now[stat_name]
   end
 
-  def get_stat_pct(stat_name)
-    get_stat_diff(stat_name) / get_stat_diff(:total)
+  def stat_pct(stat_name)
+    stat_diff(stat_name) / stat_diff(:total)
   end
 end

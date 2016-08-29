@@ -19,7 +19,8 @@ class CheckCPUSteal < Sensu::Plugin::Check::CLI
 
   def run
     stats = CpuStats.new
-    steal_pct = stats.get_stat_pct(:steal) * 100
+    stats.collect
+    steal_pct = stats.stat_pct(:steal) * 100
     message "CPU Steal Percentage: #{steal_pct}"
     critical if steal_pct > config[:crit]
     warn if steal_pct > config[:warn]
