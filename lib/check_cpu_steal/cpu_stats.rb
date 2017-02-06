@@ -2,16 +2,15 @@
 # CPU stat collection and calculation
 #
 class CpuStats
-
-  os_family = File.read("/proc/version")
-  if os_family.include? "ubuntu"
+  os_family = File.read('/proc/version')
+  if os_family.include? 'ubuntu'
     CLASSES = [:user, :nice, :system, :idle, :iowait, :irq,
                :softirq, :steal, :guest, :guest_nice].freeze
-  elsif os_family.include? "Red Hat"
+  elsif os_family.include? 'Red Hat'
     CLASSES = [:user, :nice, :system, :idle, :iowait, :irq,
                :softirq, :steal, :guest].freeze
   else
-    raise 'this check does not support this os_family'
+    fail 'this check does not support this os_family'
   end
 
   attr_reader :now, :later
